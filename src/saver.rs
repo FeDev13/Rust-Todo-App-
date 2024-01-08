@@ -42,7 +42,7 @@ impl Widget<TodoState> for Saver {
                     tasks: data.todos.clone().into_iter().collect(),
                 };
                 fs::write(config_path, serde_json::to_string(&tasks).unwrap())
-                    .expect("Config path does not fully exist");
+                    .expect("el path no existe");
             }
         }
     }
@@ -87,7 +87,7 @@ pub fn read_stored() -> TaskData {
         match serde_json::from_str(&data) {
             Ok(a) => a,
             Err(e) => {
-                eprintln!("The save data is corrupted or no longer in the format it should be in\nError {}", e);
+                eprintln!("no se ha podido salvar, datos corruptos");
                 return TaskData { tasks: Vec::new() };
             }
         }
