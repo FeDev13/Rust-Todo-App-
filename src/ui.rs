@@ -48,7 +48,7 @@ pub fn ui_builder() -> impl Widget<TodoState> {
     .lens(TodoState::todos)
     .scroll()
     .vertical();
-    let clear_complete = Button::new("Clear Completed")
+    let clear_complete = Button::new("Borrar marcados")
         .on_click(|_, data: &mut TodoState, _| data.todos.retain(|item| !item.checked));
     ZStack::new(Flex::column().with_child(header).with_flex_child(todos, 1.))
         .with_aligned_child(Padding::new(5., clear_complete), UnitPoint::BOTTOM_RIGHT)
